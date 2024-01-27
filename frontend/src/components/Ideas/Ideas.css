@@ -1,0 +1,90 @@
+.ideas {
+  margin: 103px 90px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ideas__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 884px;
+  /* text-overflow: ellipsis; */
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+}
+
+.ideas__buttons {
+  margin: 50px auto 0;
+  display: flex;
+  gap: 12px;
+}
+
+.ideas__button_type {
+  border: 0;
+  border-radius: 16px;
+  background-color: #2F2F37;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 36px 36px;
+  width: 72px;
+  height: 72px;
+  padding: 0;
+  opacity: 1;
+}
+
+.ideas__button_type:hover {
+  cursor: pointer;
+  opacity: 75%;
+  transition: opacity 0.5s linear;
+}
+
+.ideas__button_type_like {
+  background-image: url(../../images/like.svg);
+}
+
+.ideas__button_type_dislike {
+  background-image: url(../../images/dislike.svg);
+}
+
+.ideas__nav-back {
+  display: none;
+  margin: 42px auto 36px;
+  color: rgba(47, 47, 55, 0.35);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 1;
+}
+
+.ideas__nav-back:hover {
+  opacity: 75%;
+  transition: opacity 1s linear;
+}
+
+@media screen and (max-width: 768px) {
+  .ideas {
+    margin: 54px 20px 56px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ideas__title {
+    font-size: 18px;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ideas__nav-back {
+    display: block;
+  }
+}

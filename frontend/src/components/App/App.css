@@ -1,0 +1,21 @@
+:root {
+  background-color: #F1F2F3;
+  background: url(../../images/Frame.svg) repeat;
+  /* min-height: 100vh; */
+  /* min-width: 1280px; */
+}
+
+.page {
+  max-width: 1600px;
+  font-family: "Manrope", Arial, sans-serif;
+  background-color: #F1F2F3;
+  background: url(../../images/Frame.svg) repeat;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+html {
+  scroll-behavior: smooth;
+}

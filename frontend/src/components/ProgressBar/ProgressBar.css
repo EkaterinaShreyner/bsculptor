@@ -1,0 +1,28 @@
+.check__percent {
+  color: #2F2F37;
+  font-family: Manrope;
+  font-size: 170px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -10.5px;
+}
+
+.check__line {
+  margin-bottom: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .check__percent {
+    font-size: 160px;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 28px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .check__line {
+    margin-bottom: 32px;
+  }
+}

@@ -1,0 +1,28 @@
+.tooltip {
+  border-radius: 12px 12px 0px 12px;
+  padding: 16px 20px;
+  position: absolute;
+  top: -186px;
+  left: -158px;
+  width: 285px;
+  height: 158px;
+  border: 1px solid #2F2F37;
+  background: #F1F2F3;
+  white-space: normal;
+  text-align: justify;
+}
+
+.tooltip__text {
+  color: #2F2F37;
+  font-family: "PT Mono";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  width: 245px;
+}
+
+.tooltip__span {
+  color: #8259F7;
+  font-weight: 700;
+}

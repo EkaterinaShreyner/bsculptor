@@ -1,0 +1,72 @@
+.card-idea {
+  display: flex;
+  padding: 16px 20px;
+  flex-direction: column;
+  gap: 28px;
+  justify-content: space-between;
+  border-radius: 0px 16px 16px 16px;
+  background: #DCE0EC;
+  height: 187px;
+  /* width: max-content; */
+  width: 100%;
+}
+
+.card-idea__title {
+  color: #2F2F37;
+  font-family: PT Mono;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.48px;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  overflow: hidden;
+}
+
+.card-idea__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.card-idea__chance {
+  color: #2F2F37;
+  font-family: PT Mono;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+.card-idea__percent {
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: #2F2F37;
+  width: 35px;
+  color: #F7F7F8;
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.card-idea__rating-container {
+  display: flex;
+  gap: 10px;
+}
+
+@media screen and (max-width: 1050px) {
+  .card-idea__container {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .card-idea {
+    height: 100%;
+  }
+}

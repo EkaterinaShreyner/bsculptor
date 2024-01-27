@@ -1,0 +1,145 @@
+.promo {
+  margin: 0 90px 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.promo__title {
+  color: #2F2F37;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 56px 0 32px;
+  max-width: 826px;
+  line-height: 105%;
+  position: relative;
+}
+
+.promo__subtitle {
+  color: #2F2F37;
+  /* font-family: Manrope; */
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%;
+  margin-bottom: 83px;
+}
+
+.promo__image-lightning {
+  position: absolute;
+  right: -35px;
+  top: 30px
+}
+
+.promo__button-scroll {
+  position: relative;
+  color: #2F2F37;
+  font-family: "PT Mono";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  border: 0;
+  text-align: center;
+  margin-bottom: 83px;
+  background-color: transparent;
+}
+
+.promo__image-vector {
+  position: absolute;
+  left: 50%;
+  top: 25px;
+}
+
+.promo__cards-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  /* grid-template-columns: repeat(auto-fill, 236px); */
+  gap: 20px;
+}
+
+.promo__label {
+  color: #2F2F37;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .promo {
+    margin: 0 20px 20px;
+  }
+}
+
+/* @media screen and (max-width: 768px) {
+  .promo__title {
+    font-size: 25px;
+  }
+} */
+
+@media screen and (max-width: 1439px) {
+  .promo__cards-list {
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .promo__title {
+    font-size: 25px;
+    max-width: 626px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .promo__image-lightning {
+    top: 27px;
+    right: 288px;
+    width: 25px;
+    height: 37px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .promo__title {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .promo__subtitle {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .promo__title {
+    width: 353px;
+    margin: 60px 0 28px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .promo__subtitle {
+    margin-bottom: 21px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .promo__image-lightning {
+    top: 54px;
+    right: 18px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .promo__button-scroll {
+    margin-bottom: 45px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .promo__label {
+    margin-bottom: 40px;
+  }
+}
