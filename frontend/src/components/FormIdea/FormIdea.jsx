@@ -31,19 +31,6 @@ function FormIdea(props) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setIsValidEmail(emailRegex.test(props.value));
   }
-
-  // const tooltip = showToolTip && 
-  //   <div
-  //   className="main__question"
-  //   onMouseEnter={onMouseEnterHandler}
-  //   onMouseLeave={onMouseLeaveHandler}
-  // >
-  //   Что это?
-  //   <img
-  //     className="main__icon"
-  //     src={icon}
-  //     alt="подсказка"/>
-  // </div>
   
   return (
     <form>

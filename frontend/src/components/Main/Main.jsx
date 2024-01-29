@@ -9,7 +9,7 @@ import lampMobile from '../../images/lampMobile.svg';
 import IdeaInput from '../IdeaInput/IdeaInput';
 import CardIdeaList from '../CardIdeaList/CardIdeaList';
 
-function Main(props) {
+function Main() {
 
   const isHiddenMobile = () => {
     return window.innerWidth <= 1000;

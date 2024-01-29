@@ -31,18 +31,9 @@ function IdeaInput() {
         closeOnBlur="true"
         className="modal__background">
         <Modal.Card className="modal__container" closeOnBlur="false">
-          {/* <Modal.Card.Header>
-            <Modal.Card.Title textColor="success">l
-            </Modal.Card.Title>
-          </Modal.Card.Header> */}
           <Modal.Card.Body className="modal__content">
             {RenderProgress(value, chance)}
           </Modal.Card.Body>
-          {/* <Modal.Card.Footer 
-            className="buttons"
-            style={{justifyContent: "end"}}
-          >
-          </Modal.Card.Footer> */}
         </Modal.Card>
       </Modal>
     );

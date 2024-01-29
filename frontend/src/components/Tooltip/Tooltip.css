@@ -3,9 +3,8 @@
   padding: 16px 20px;
   position: absolute;
   top: -186px;
-  left: -158px;
+  left: -135px;
   width: 285px;
-  height: 158px;
   border: 1px solid #2F2F37;
   background: #F1F2F3;
   white-space: normal;
@@ -19,10 +18,34 @@
   font-style: normal;
   font-weight: 400;
   line-height: 130%;
-  width: 245px;
 }
 
 .tooltip__span {
   color: #8259F7;
   font-weight: 700;
+}
+
+@media screen and (max-width: 1400px) {
+  .tooltip {
+    top: -186px;
+    left: 148px;
+    border-radius: 12px 12px 12px 0px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .tooltip {
+    top: -170px;
+    left: -135px;
+    border-radius: 12px 12px 0px 12px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .tooltip {
+    width: 352px;
+    left: -201px;
+    top: 29px;
+    border-radius: 12px 0 12px 12px;
+  }
 }

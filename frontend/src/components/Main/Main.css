@@ -51,8 +51,6 @@
     position: absolute;
     right: -60%;
     top: -200px;
-    /* width: 325px; */
-    /* height: 364px; */
   }
 }
 
@@ -106,8 +104,6 @@
 
 @media screen and (max-width: 768px) {
   .main__title-span { 
-    /* background: none; */
-    /* color: #2F2F37; */
     font-size: 36px;
   }
 }
@@ -118,5 +114,11 @@
     height: 86px;
     top: -20px;
     right: 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main__title {
+    margin-bottom: 110px;
   }
 }

@@ -1,18 +1,20 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-// const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cardIdeaRouter = require('./routes/cardIdea');
+const errorsHandler = require('./middlewares/errorsHandler');
+
+const NotFoundError = require('./errors/NotFoundError');
 
 const { PORT } = process.env;
 const { MONGO_URL = 'mongodb://127.0.0.1:27017/ideasdb' } = process.env;
 const app = express();
 
-app.use(cors({ origin: ['http://localhost:3000', ' https://bsculptor.ru'] }));
+app.use(cors({ origin: ['http://localhost:3000', 'https://bsculptor.ru'] }));
 
 mongoose.connect(MONGO_URL, {
   useNewUrlParser: true,
@@ -25,7 +27,6 @@ mongoose.connect(MONGO_URL, {
   });
 
 app.use(express.json());
-// // app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -34,8 +35,16 @@ app.use(requestLogger);
 
 app.use('/', cardIdeaRouter);
 
+// роут для несуществующей страницы
+app.use('/*', (_req, _res, next) => {
+  next(new NotFoundError('Страница не найдена'));
+});
+
 // логгер ошибок подключаем после обработчиков роутов и до обработчиков ошибок
 app.use(errorLogger);
+
+// централизованный обработчик ошибок
+app.use(errorsHandler);
 
 app.listen(PORT, () => {
   console.log(`Application is running on port ${PORT}`);

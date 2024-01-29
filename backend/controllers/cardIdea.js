@@ -1,23 +1,23 @@
 const CardIdea = require('../models/cardIdea');
+const { SUCCESS_CREATE__REQUEST } = require('../utils/constants');
 
 // запрос всех карточек
-function getCardIdeas(_req, res) {
+function getCardIdeas(_req, res, next) {
   CardIdea.find({})
     .then((cards) => res.send(cards))
-    // .catch((err) => next(err));
-    .catch((err) => console.log(err));
+    .catch((err) => next(err.name));
 }
 
-function createNewCardIdea(req, res) {
+function createNewCardIdea(req, res, next) {
   const { title, chance } = req.body;
   CardIdea.create({ title, chance })
-    .then((card) => res.status(200).send(card))
+    .then((card) => res.status(SUCCESS_CREATE__REQUEST).send(card))
     .catch((err) => {
       console.log(err);
       // if (err.name === 'ValidationError') {
-      //   return next(new BadRequestError('Переданы некорректные данные карточки'));
+      //   return next(new BadRequestError('Переданы некорректные данные'));
       // }
-      // return next(err);
+      return next(err);
     });
 }
 
@@ -32,6 +32,7 @@ function likeCard(req, res) {
     })
     .catch((err) => {
       console.log(err.name);
+      return next(err);
     });
 }
 
@@ -46,6 +47,7 @@ function dislikeCard(req, res) {
     })
     .catch((err) => {
       console.log(err.name);
+      return next(err);
     });
 }
 
