@@ -13,6 +13,11 @@ import ModalConfirm from "../ModalConfirm/ModalConfirm";
 function Promo() {
   const [emailValue, setEmailValue] = useState("");
   const [showModalConfirm, setShowModalConfirm] = useState(false);
+  const [choosedIdPromoCard, setChoosedIdPromoCard] = useState(-1);
+
+  const handleValueChange = (idPromoCard) => {
+    setChoosedIdPromoCard(idPromoCard);
+  };
 
   // useEffect(() => window.scrollTo(0, 2000), []);
 
@@ -31,8 +36,6 @@ function Promo() {
     }, 2000);
   };
 
-
-
   const renderedCards = promoData.map((data, index) => (
     <CardPromo
       key={index}
@@ -43,10 +46,11 @@ function Promo() {
       textEnd={data.textEnd}
       crossedPrices={data.crossedPrice}
       actualPrices={data.actualPrice}
-      ImageCards={isHiddenMobile() ? data.imageMobile : data.image }
+      ImageCards={isHiddenMobile() ? data.imageMobile : data.image}
+      onPromoIdChange={handleValueChange}
+      isChoosed={data.id === choosedIdPromoCard ? true : false}
     />
   ));
-
   return (
     <>
       <div className="promo">

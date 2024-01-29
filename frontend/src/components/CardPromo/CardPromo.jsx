@@ -3,14 +3,12 @@ import { useState } from "react";
 
 import './CardPromo.css'
 
-function CardPromo({id, textStart, textBold, textFor, textEnd, crossedPrices, actualPrices, ImageCards}) {
+function CardPromo({id, textStart, textBold, textFor, textEnd, crossedPrices, actualPrices, ImageCards, onPromoIdChange, isChoosed}) {
   const [checkmark, setCheckMark] = useState(false);
-  const [choosedPromoId, setChoosePromoId] = useState(-1);
-  const handleClickPromo = () => { 
-    setCheckMark(!checkmark); 
-    setChoosePromoId(id)} 
-
-
+  const handleClickPromo = (event) => {
+      onPromoIdChange(id);
+      setCheckMark(!checkmark)
+  };
 
   return (
     <div className="card-promo-container" onClick={handleClickPromo} id={id}>
@@ -33,8 +31,7 @@ function CardPromo({id, textStart, textBold, textFor, textEnd, crossedPrices, ac
           </div>
         <img className="card-promo__image" src={ImageCards} alt="картинка"/>
       </div>
-      <div className={`card-promo__option ${checkmark? "card-promo__option_active" : ""}`}></div>
-      {/* <div className="card-promo__option card-promo__option_active"></div> */}
+      <div className={`card-promo__option ${isChoosed? "card-promo__option_active" : ""}`}></div>
     </div>
   );
 }
