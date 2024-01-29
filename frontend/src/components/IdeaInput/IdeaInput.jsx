@@ -59,7 +59,7 @@ function IdeaInput() {
         isValidIdea={isValidInputIdea}
       ></FormIdea>
       {!isValidInputIdea && (
-        <Form.Help color="danger">
+        <Form.Help color="danger" className="is-hidden-mobile"> 
           Невалидная идея
         </Form.Help>
       )}

@@ -46,6 +46,8 @@ function FormIdea(props) {
         />
         {invalidEmailOnPromoPage && 
         <Form.Help color="danger" className="is-hidden-tablet">Невалидная почта</Form.Help>}
+        {!props.isValidIdea && 
+        <Form.Help color="danger" className="is-hidden-tablet">Невалидная идея</Form.Help>}
         <Button
           className="main__button-submit"
           type="submit"
