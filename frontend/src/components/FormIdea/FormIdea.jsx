@@ -39,7 +39,7 @@ function FormIdea(props) {
           onChange={onChangeInput}
           value={props.value}
           className="main__input"
-          style={invalidEmailOnPromoPage ? { borderBottomColor: 'red' } : {}}
+          style={invalidEmailOnPromoPage || !props.isValidIdea ? { borderBottomColor: 'red' } : {}}
           size={9}
           minLength={2}
           placeholder={props.placeholder}
@@ -49,7 +49,7 @@ function FormIdea(props) {
         <Button
           className="main__button-submit"
           type="submit"
-          disabled={props.value === "" || invalidEmailOnPromoPage ? true : false}
+          disabled={props.value === "" || invalidEmailOnPromoPage || !props.isValidIdea ? true : false}
           onClick={onCheckIdea}
         >
           {currentPath === '/'? "Оценить" : "Прислать"}

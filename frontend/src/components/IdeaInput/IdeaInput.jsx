@@ -5,12 +5,14 @@ import './IdeaInput.css'
 import RenderProgress from "../Progress/Progress"
 import FormIdea from "../FormIdea/FormIdea";
 import * as mainApi from "../../utils/MainApi";
+import { Form, Help } from "react-bulma-components";
 
 
 function IdeaInput() {
   const [value, setValue] = useState("");
   const [isShowModal, setShowModal] = useState(false)
   const [chance, setChance] = useState(0);
+  const [isValidInputIdea, setIsValidInputIdea] = useState(true);
 
   function handleCheckIdea() {
     const randomNumber = Math.floor(Math.random() * 90) + 5;
@@ -21,6 +23,13 @@ function IdeaInput() {
     })
     setShowModal(true);
   }
+
+  function handleInputChange (e) {
+    const inputValue = e.target.value;
+    const regex = /^[А-Яа-я\s]{5,}$/;
+    setValue(e.target.value)
+    setIsValidInputIdea(regex.test(inputValue));
+  };
 
   function RenderModalProgress() {
     return (
@@ -46,8 +55,14 @@ function IdeaInput() {
         placeholder="Опиши свою идею"
         value={value}
         // onCheckIdea={handleCheckIdea}
-        onChangeInput={(e) => setValue(e.target.value)}
+        onChangeInput={handleInputChange}
+        isValidIdea={isValidInputIdea}
       ></FormIdea>
+      {!isValidInputIdea && (
+        <Form.Help color="danger">
+          Невалидная идея
+        </Form.Help>
+      )}
     </div>
   );
 }
