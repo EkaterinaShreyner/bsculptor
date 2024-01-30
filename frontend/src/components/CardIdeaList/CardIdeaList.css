@@ -30,6 +30,12 @@
   margin-top: 40px;
   background: transparent;
   position: relative;
+  opacity: 1;
+}
+.card-idea__list-button:hover {
+  color: #F7F7F8;
+  opacity: 75%;
+  transition: opacity 0.5s linear;
 }
 
 .card-idea__list-img {

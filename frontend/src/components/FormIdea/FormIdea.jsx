@@ -39,7 +39,8 @@ function FormIdea(props) {
           onChange={onChangeInput}
           value={props.value}
           className="main__input"
-          style={invalidEmailOnPromoPage || !props.isValidIdea ? { borderBottomColor: 'red' } : {}}
+          // style={invalidEmailOnPromoPage || !props.isValidIdea ? { borderBottomColor: 'red' } : {}}
+          style={invalidEmailOnPromoPage? { borderBottomColor: 'red' } : {}}
           size={9}
           minLength={2}
           placeholder={props.placeholder}
@@ -47,7 +48,7 @@ function FormIdea(props) {
         {invalidEmailOnPromoPage && 
         <Form.Help color="danger" className="is-hidden-tablet">Невалидная почта</Form.Help>}
         {!props.isValidIdea && 
-        <Form.Help color="danger" className="is-hidden-tablet">Невалидная идея</Form.Help>}
+        <Form.Help color="danger" className="is-hidden-tablet">Текст должен содержать кириллицу и быть не менее 5 символов</Form.Help>}
         <Button
           className="main__button-submit"
           type="submit"
