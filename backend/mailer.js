@@ -1,7 +1,8 @@
+// настройка почты
 // require('dotenv').config();
 // const nodemailer = require('nodemailer')
-// const EMAIL = 'test@gmail.com'
-// const PASSWORD = 'afdsfdsf'
+// const EMAIL = 'shreynerk@gmail.com'
+// const PASSWORD = 'jnja srug gxks aihq'
 
 // const transporter = nodemailer.createTransport({
 //     service: 'gmail',
@@ -13,7 +14,7 @@
 
 // const mailOptions = {
 //     from: EMAIL,
-//     to: EMAIL,
+//     to: "di_dunk@mail.ru",
 //     subject: 'Письмо от bsculptor',
 //     text: 'Спасибо за выбор промо'
 // }

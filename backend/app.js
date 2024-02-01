@@ -4,20 +4,24 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cardIdeaRouter = require('./routes/cardIdea');
+const userPromoSelection = require('./routes/userPromoSelection');
 const errorsHandler = require('./middlewares/errorsHandler');
 
 const NotFoundError = require('./errors/NotFoundError');
 
+
 const { PORT } = process.env;
-const { MONGO_URL = 'mongodb://127.0.0.1:27017/ideasdb' } = process.env;
+// const { MONGO_URL = 'mongodb://127.0.0.1:27017/ideasdb' } = process.env;
+const { MONGO_URL } = process.env;
 const app = express();
 
 app.use(cors({ origin: ['http://localhost:3000', 'https://bsculptor.ru'] }));
 
 mongoose.connect(MONGO_URL, {
-  useNewUrlParser: true,
+  // useNewUrlParser: true,
 })
   .then(() => {
     console.log('БД подключена');
@@ -34,6 +38,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestLogger);
 
 app.use('/', cardIdeaRouter);
+app.use('/promo', userPromoSelection);
+
 
 // роут для несуществующей страницы
 app.use('/*', (_req, _res, next) => {

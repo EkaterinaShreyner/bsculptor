@@ -27,21 +27,22 @@
 .card-idea__list-button {
   border: none;
   color: #2F2F37;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   background: transparent;
   position: relative;
   opacity: 1;
+  margin: 40px auto 0;
+  width: 175px;
 }
 .card-idea__list-button:hover {
-  color: #F7F7F8;
   opacity: 75%;
   transition: opacity 0.5s linear;
 }
 
 .card-idea__list-img {
   position: absolute;
-  /* left: 1px; */
-  bottom: -5px;
+  left: 0;
+  bottom: -12px;
 }
 
 @media screen and (max-width: 768px) {
@@ -63,12 +64,12 @@
     color: white;
     border-radius: 12px 0px 12px 12px;
     background-color: #2F2F37;
+    width: 100%;
   }
 }
 
-/* @media screen and (max-width: 768px) {
-  .card-idea__list-container {
-    margin-top: 51px;
-    box-sizing: initial;
+@media screen and (max-width: 768px) {
+  .card-idea__list-button:hover {
+    color: #F7F7F8;
   }
-} */
+}

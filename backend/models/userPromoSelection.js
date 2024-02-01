@@ -10,6 +10,6 @@ const userPromoSelection = new mongoose.Schema({
   }
 });
 
-const UserPromoSelection = mongoose.model('userPromoSelection', userPromoSelection);
+const UserPromoSelection = mongoose.model('userPromoSelections', userPromoSelection);
 
-module.exports = CardIdea
+module.exports = UserPromoSelection;

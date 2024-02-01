@@ -49,3 +49,29 @@ export const dislikeCard = (cardId) => {
   })
   .then((res) => res.ok ? res.json() : Promise.reject(res.status));
 }
+
+// записать в БД почту и id карточки 
+export const createUserPromo = ({userEmail, cardPromoId}) => {
+  return fetch(`${BASE_URL}/promo`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({userEmail, cardPromoId})
+  })
+  .then((res) => res.ok ? res.json() : Promise.reject(res.status));
+}
+
+// записать в БД почту и id карточки 
+export const addCount = ({cardPromoId}) => {
+  return fetch(`${BASE_URL}/promo`, {
+    method: 'PATCH',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({cardPromoId})
+  })
+  .then((res) => res.ok ? res.json() : Promise.reject(res.status));
+}

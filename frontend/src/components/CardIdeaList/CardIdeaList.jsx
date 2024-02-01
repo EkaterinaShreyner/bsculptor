@@ -44,13 +44,13 @@ function CardIdeaList(props) {
     ))
 
   const renderButtonShowMore = 
-    <Button
+    <button
       className="card-idea__list-button"
       onClick={() => setShowCards(prevValue => prevValue + 2)}
       > 
       Смотреть еще
       <img src={circul} className="card-idea__list-img" alt="смотреть еще" />
-    </Button>
+    </button>
   return (
     <>
       <div className="card-idea__list-container">

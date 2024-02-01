@@ -8,19 +8,18 @@ function getCardIdeas(_req, res, next) {
     .catch((err) => next(err.name));
 }
 
+// создание новой идеи
 function createNewCardIdea(req, res, next) {
   const { title, chance } = req.body;
   CardIdea.create({ title, chance })
     .then((card) => res.status(SUCCESS_CREATE__REQUEST).send(card))
     .catch((err) => {
       console.log(err);
-      // if (err.name === 'ValidationError') {
-      //   return next(new BadRequestError('Переданы некорректные данные'));
-      // }
       return next(err);
     });
 }
 
+// лайк
 function likeCard(req, res) {
   const { cardId } = req.params;
   CardIdea.findByIdAndUpdate(
@@ -36,6 +35,7 @@ function likeCard(req, res) {
     });
 }
 
+// дислайк
 function dislikeCard(req, res) {
   const { cardId } = req.params;
   CardIdea.findByIdAndUpdate(

@@ -8,10 +8,7 @@ import Tooltip from '../Tooltip/Tooltip';
 function FormIdea(props) {
   const location = useLocation();
   const currentPath = location.pathname;
-  const [isValidEmail, setIsValidEmail] = useState(true);
   const [showToolTip, setShowToolTip] = useState(false);
-
-  const invalidEmailOnPromoPage = (currentPath !== '/' && !isValidEmail);
 
   const onMouseEnterHandler = () => {
     setShowToolTip(true);
@@ -22,16 +19,13 @@ function FormIdea(props) {
 
   function onCheckIdea(e) {
     e.preventDefault();
-    // props.onCheckIdea();
     props.modal(true);
   }
 
   function onChangeInput(e) {
     props.onChangeInput(e)
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setIsValidEmail(emailRegex.test(props.value));
   }
-  
+
   return (
     <form>
       <Form.Field kind="addons" align="end" className="main__form">
@@ -39,20 +33,20 @@ function FormIdea(props) {
           onChange={onChangeInput}
           value={props.value}
           className="main__input"
-          // style={invalidEmailOnPromoPage || !props.isValidIdea ? { borderBottomColor: 'red' } : {}}
-          style={invalidEmailOnPromoPage? { borderBottomColor: 'red' } : {}}
+          style={!props.isValid ? { borderBottomColor: 'red' } : {}}
           size={9}
           minLength={2}
           placeholder={props.placeholder}
         />
-        {invalidEmailOnPromoPage && 
-        <Form.Help color="danger" className="is-hidden-tablet">Невалидная почта</Form.Help>}
-        {!props.isValidIdea && 
-        <Form.Help color="danger" className="is-hidden-tablet">Текст должен содержать кириллицу и быть не менее 5 символов</Form.Help>}
+        {currentPath === "/promo" ?
+          !props.isValid && <Form.Help color="danger" className="is-hidden-tablet">Невалидная почта</Form.Help>
+          :
+          !props.isValid && <Form.Help color="danger" className="is-hidden-tablet">Текст должен содержать кириллицу и быть не менее 5 символов</Form.Help>        
+        }
         <Button
           className="main__button-submit"
           type="submit"
-          disabled={props.value === "" || invalidEmailOnPromoPage || !props.isValidIdea ? true : false}
+          disabled={!props.isValid || props.value === "" || props.choosedIdPromoCard === -1}
           onClick={onCheckIdea}
         >
           {currentPath === '/'? "Оценить" : "Прислать"}
@@ -69,13 +63,14 @@ function FormIdea(props) {
                 alt="подсказка"/>
               {showToolTip && <Tooltip></Tooltip>}
             </div>
-            
           }
-          
         </Button>
       </Form.Field>
-      {invalidEmailOnPromoPage && 
-        <Form.Help color="danger" className="is-hidden-mobile">Невалидная почта</Form.Help>}
+        {currentPath === "/promo" ?
+          !props.isValid && <Form.Help color="danger" className="is-hidden-mobile">Невалидная почта</Form.Help>
+          :
+          !props.isValid && <Form.Help color="danger" className="is-hidden-mobile">Текст должен содержать кириллицу и быть не менее 5 символов</Form.Help>        
+        }
     </form>
   )
 }

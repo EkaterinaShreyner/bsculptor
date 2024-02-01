@@ -5,11 +5,10 @@ import './IdeaInput.css'
 import RenderProgress from "../Progress/Progress"
 import FormIdea from "../FormIdea/FormIdea";
 import * as mainApi from "../../utils/MainApi";
-import { Form, Help } from "react-bulma-components";
 
 
 function IdeaInput() {
-  const [value, setValue] = useState("");
+  const [ideaValue, setIdeaValue] = useState("");
   const [isShowModal, setShowModal] = useState(false)
   const [chance, setChance] = useState(0);
   const [isValidInputIdea, setIsValidInputIdea] = useState(true);
@@ -18,7 +17,7 @@ function IdeaInput() {
     const randomNumber = Math.floor(Math.random() * 90) + 5;
     setChance(randomNumber)
     mainApi.createNewCard({
-      title: value,
+      title: ideaValue,
       chance: randomNumber
     })
     setShowModal(true);
@@ -27,7 +26,7 @@ function IdeaInput() {
   function handleInputChange (e) {
     const inputValue = e.target.value;
     const regex = /^[А-Яа-я\s]{5,}$/;
-    setValue(e.target.value)
+    setIdeaValue(e.target.value)
     setIsValidInputIdea(regex.test(inputValue));
   };
 
@@ -41,7 +40,7 @@ function IdeaInput() {
         className="modal__background">
         <Modal.Card className="modal__container" closeOnBlur="false">
           <Modal.Card.Body className="modal__content">
-            {RenderProgress(value, chance)}
+            {RenderProgress(ideaValue, chance)}
           </Modal.Card.Body>
         </Modal.Card>
       </Modal>
@@ -53,16 +52,10 @@ function IdeaInput() {
       <FormIdea
         modal={handleCheckIdea}
         placeholder="Опиши свою идею"
-        value={value}
-        // onCheckIdea={handleCheckIdea}
+        value={ideaValue}
         onChangeInput={handleInputChange}
-        isValidIdea={isValidInputIdea}
+        isValid={isValidInputIdea}
       ></FormIdea>
-      {!isValidInputIdea && (
-        <Form.Help color="danger" className="is-hidden-mobile"> 
-          Невалидная идея
-        </Form.Help>
-      )}
     </div>
   );
 }
