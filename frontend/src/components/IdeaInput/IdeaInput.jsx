@@ -26,9 +26,13 @@ function IdeaInput(props) {
 
   function handleInputChange (e) {
     const inputValue = e.target.value;
-    const regex = /^[А-Яа-я\s]{5,}$/;
+    // const regex = /^[А-Яа-я0-9\s]{5,}$/;
+    // const regex = /^[А-Яа-я0-9\s%+\-*/=.,;:!@#$%^&*()_+{}\[\]:;<=>?`~|]{5,}$/;
+    // const regex = /^[А-Яа-я0-9.,:%!:=?;]{5,}$/;
+    // const regex = /^.{5,}$/;
     setIdeaValue(e.target.value)
-    setIsValidInputIdea(regex.test(inputValue));
+    // setIsValidInputIdea(regex.test(inputValue));
+    setIsValidInputIdea(inputValue);
   };
 
   function RenderModalProgress() {
