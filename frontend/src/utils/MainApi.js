@@ -51,14 +51,14 @@ export const dislikeCard = (cardId) => {
 }
 
 // записать в БД почту и id карточки 
-export const createUserPromo = ({userEmail, cardPromoId}) => {
+export const createUserPromo = ({userEmail, cardPromoId, title}) => {
   return fetch(`${BASE_URL}/promo`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({userEmail, cardPromoId})
+    body: JSON.stringify({userEmail, cardPromoId, title})
   })
   .then((res) => res.ok ? res.json() : Promise.reject(res.status));
 }

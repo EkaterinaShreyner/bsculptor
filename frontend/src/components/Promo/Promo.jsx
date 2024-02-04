@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import CardPromo from "../CardPromo/CardPromo";
 import { promoData } from "../../utils/constants"; 
 import lightning from "../../images/lightning.svg";
@@ -10,12 +10,19 @@ import FormIdea from "../FormIdea/FormIdea";
 import { Link } from "react-router-dom";
 import ModalConfirm from "../ModalConfirm/ModalConfirm";
 import * as mainApi from "../../utils/MainApi";
+import { IdeaTextContext } from "../../context/IdeaTextContext.js";
 
 function Promo() {
   const [emailValue, setEmailValue] = useState("");
   const [showModalConfirm, setShowModalConfirm] = useState(false);
   const [choosedIdPromoCard, setChoosedIdPromoCard] = useState(-1);
   const [isValidEmail, setIsValidEmail] = useState(true);
+  const [title, setTitle] = useState('')
+  const ideaValue = useContext(IdeaTextContext);
+
+  useEffect(() => {
+    setTitle(ideaValue);
+  }, [ideaValue]);
 
   const handleValueChange = (idPromoCard) => {
     setChoosedIdPromoCard(idPromoCard);
@@ -36,7 +43,8 @@ function Promo() {
   const handleShowModal = () => {
     mainApi.createUserPromo({
       userEmail: emailValue,
-      cardPromoId: choosedIdPromoCard
+      cardPromoId: choosedIdPromoCard,
+      title: ideaValue
     })
       .then(() => {
         setTimeout(() => {

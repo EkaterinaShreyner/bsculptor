@@ -7,7 +7,7 @@ import FormIdea from "../FormIdea/FormIdea";
 import * as mainApi from "../../utils/MainApi";
 
 
-function IdeaInput() {
+function IdeaInput(props) {
   const [ideaValue, setIdeaValue] = useState("");
   const [isShowModal, setShowModal] = useState(false)
   const [chance, setChance] = useState(0);
@@ -21,6 +21,7 @@ function IdeaInput() {
       chance: randomNumber
     })
     setShowModal(true);
+    props.text(ideaValue);
   }
 
   function handleInputChange (e) {

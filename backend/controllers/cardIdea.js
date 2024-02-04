@@ -1,6 +1,15 @@
 const CardIdea = require('../models/cardIdea');
 const { SUCCESS_CREATE__REQUEST } = require('../utils/constants');
 
+// const { OpenAI } = require("openai");
+// const readline = require("readline");
+
+// const openai = new OpenAI({
+//   // apiKey: process.env['OPENAI_API_KEY'],
+//   apiKey: "sk-or-vv-84f73fd5eda54d7c3ecab670898a3f36f479dbc1d94df1c1bc036ed6facf2b5a"
+// });
+
+
 // запрос всех карточек
 function getCardIdeas(_req, res, next) {
   CardIdea.find({})

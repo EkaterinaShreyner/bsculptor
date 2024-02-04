@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './CardIdeaList.css';
 import CardIdea from '../CardIdea/CardIdea';
-import { Button } from "react-bulma-components";
-// import { cardIdeaData } from '../../utils/constants';
 import circul from '../../images/circul.svg';
 import * as mainApi from "../../utils/MainApi";
 
@@ -22,7 +20,6 @@ function CardIdeaList(props) {
 
   const bestIdeas = 
     cardIdeaList.slice(0, showCards).map((data, index) => (
-    // cardIdeaData.slice(0, showCards).map((data, index) => (
       <CardIdea
         key={index}
         title={data.title}
@@ -33,7 +30,6 @@ function CardIdeaList(props) {
     ))
   const newIdeas = 
     cardIdeaList.slice(0, showCards).map((data, index) => (
-    // cardIdeaData.slice(0, showCards).map((data, index) => (
       <CardIdea
         key={index}
         title={data.title}

@@ -40,7 +40,6 @@ app.use(requestLogger);
 app.use('/', cardIdeaRouter);
 app.use('/promo', userPromoSelection);
 
-
 // роут для несуществующей страницы
 app.use('/*', (_req, _res, next) => {
   next(new NotFoundError('Страница не найдена'));

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Main.css'
 import '../Ideas/Ideas.css';
 import line1 from '../../images/line1.svg';
@@ -9,7 +9,13 @@ import lampMobile from '../../images/lampMobile.svg';
 import IdeaInput from '../IdeaInput/IdeaInput';
 import CardIdeaList from '../CardIdeaList/CardIdeaList';
 
-function Main() {
+function Main({testText}) {
+
+  const [ideaValue, setIdeaValue] = useState('');
+  function handleIdeaTitle(text) {
+   setIdeaValue(text)
+   testText(text)
+  }
 
   const isHiddenMobile = () => {
     return window.innerWidth <= 1000;
@@ -24,10 +30,9 @@ function Main() {
           <img className="main__line-second" src={line2} alt ="линия два" />
           <img className="main__img-lamp" src={!isHiddenMobile()? lamp : lampMobile} alt="идея" />
         </h1>
-        <IdeaInput />
+        <IdeaInput text = {handleIdeaTitle} />
         <CardIdeaList />
       </main>
-      
     </>
   )
 }
