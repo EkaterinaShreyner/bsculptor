@@ -13,14 +13,14 @@ function CardIdeaList(props) {
   useEffect(() => {
     mainApi.getCards()
       .then((cards) => {
-        setCardIdeaList(cards)
-        setBestIdeaList(cards.sort((a, b) => b.chance - a.chance).slice(0, 10))
+        setCardIdeaList(cards.slice().reverse())
+        setBestIdeaList(cards.sort((a, b) => b.likes - a.likes).slice(0, 10))
       })
       .catch((err) => console.log(err))
 }, [])
 
   const bestIdeas = 
-    cardIdeaList.slice(0, showCards).map((data, index) => (
+    bestIdeaList.slice(0, showCards).map((data, index) => (
       <CardIdea
         key={index}
         title={data.title}
