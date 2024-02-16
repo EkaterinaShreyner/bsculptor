@@ -8,14 +8,15 @@ function CardIdeaList(props) {
   const [shownNewIdea, setShowNewIdea] = useState(false);
   const [showCards, setShowCards] = useState(4);
   const [cardIdeaList, setCardIdeaList] = useState([]);
+  const [bestIdeaList, setBestIdeaList] = useState([]);
 
   useEffect(() => {
     mainApi.getCards()
       .then((cards) => {
         setCardIdeaList(cards)
+        setBestIdeaList(cards.sort((a, b) => b.chance - a.chance).slice(0, 10))
       })
       .catch((err) => console.log(err))
-
 }, [])
 
   const bestIdeas = 
