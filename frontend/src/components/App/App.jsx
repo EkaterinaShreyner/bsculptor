@@ -10,6 +10,7 @@ import Promo from "../Promo/Promo";
 import Main from "../Main/Main";
 import Ideas from "../Ideas/Ideas";
 import { IdeaTextContext } from "../../context/IdeaTextContext";
+import DataAdmin from '../DataAdmin/DataAdmin';
 
 function App() {
   const [ideaValue, setIdeaValue] = useState('');
@@ -54,6 +55,14 @@ function App() {
             <>
               <Header/>
               <Promo />
+            </>
+          }
+        ></Route>
+        <Route
+          path='/admin2024bsculptor'
+          element={
+            <>
+              <DataAdmin />
             </>
           }
         ></Route>

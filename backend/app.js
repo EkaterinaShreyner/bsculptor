@@ -21,7 +21,6 @@ const app = express();
 app.use(cors({ origin: ['http://localhost:3000', 'https://bsculptor.ru'] }));
 
 mongoose.connect(MONGO_URL, {
-  // useNewUrlParser: true,
 })
   .then(() => {
     console.log('БД подключена');
@@ -39,6 +38,7 @@ app.use(requestLogger);
 
 app.use('/', cardIdeaRouter);
 app.use('/promo', userPromoSelection);
+app.use('/admin2024bsculptor', userPromoSelection);
 
 // роут для несуществующей страницы
 app.use('/*', (_req, _res, next) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,  } from "react";
+import { useState } from "react";
 import { Modal } from "react-bulma-components";
 import './IdeaInput.css'
 import RenderProgress from "../Progress/Progress"
@@ -12,6 +12,7 @@ function IdeaInput(props) {
   const [isShowModal, setShowModal] = useState(false)
   const [chance, setChance] = useState(0);
   const [isValidInputIdea, setIsValidInputIdea] = useState(true);
+  const [responseInvalid, setResponseInvalid] = useState(false);
 
   function handleCheckIdea() {
     const randomNumber = Math.floor(Math.random() * 90) + 5;
@@ -20,19 +21,32 @@ function IdeaInput(props) {
       title: ideaValue,
       chance: randomNumber
     })
-    setShowModal(true);
-    props.text(ideaValue);
+    .then(res => res.text())
+    .then((text) => {
+      console.log(text)
+      if (text.trim() === 'нет') {
+        console.log("1")
+        setResponseInvalid(true);
+        setShowModal(false); // Если ответ "Нет", скрываем модальное окно
+        
+      } else {
+        console.log("3")
+        setShowModal(true);
+        props.text(ideaValue);
+      }
+    })
+    .catch(err => {
+      console.error('Произошла ошибка при создании новой карточки:', err);
+      // Обработка ошибок, если необходимо
+    });
   }
 
   function handleInputChange (e) {
     const inputValue = e.target.value;
-    // const regex = /^[А-Яа-я0-9\s]{5,}$/;
-    // const regex = /^[А-Яа-я0-9\s%+\-*/=.,;:!@#$%^&*()_+{}\[\]:;<=>?`~|]{5,}$/;
-    // const regex = /^[А-Яа-я0-9.,:%!:=?;]{5,}$/;
-    // const regex = /^.{5,}$/;
+    const regex = /^[А-Яа-я0-9.,:%!:=?-@*()+_<>; ]{5,}$/;
     setIdeaValue(e.target.value)
-    // setIsValidInputIdea(regex.test(inputValue));
-    setIsValidInputIdea(inputValue);
+    setIsValidInputIdea(regex.test(inputValue));
+    setResponseInvalid(false)
   };
 
   function RenderModalProgress() {
@@ -59,7 +73,8 @@ function IdeaInput(props) {
         placeholder="Опиши свою идею"
         value={ideaValue}
         onChangeInput={handleInputChange}
-        isValid={isValidInputIdea}
+        isValid={responseInvalid ? false : isValidInputIdea}
+        responseInvalid={responseInvalid}
       ></FormIdea>
     </div>
   );

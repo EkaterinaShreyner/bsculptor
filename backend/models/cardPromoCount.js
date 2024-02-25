@@ -9,7 +9,7 @@ const cardPromoCount = new mongoose.Schema({
     type: String,
     default: 0
   },
-  countChoose: {
+  countChoosed: {
     type: Number,
     default: 0,
   }

@@ -47,15 +47,16 @@ function Promo() {
       title: ideaValue
     })
       .then(() => {
-        setTimeout(() => {
-          setShowModalConfirm(true)
-        }, 300);
+        setShowModalConfirm(true)
         setTimeout(() => {
           setShowModalConfirm(false)
         }, 2000);
       })
-      .catch((err) => console.log(err))
-      .finally(() => setEmailValue(""))
+      .catch((err) => console.log('Ошибка при отправке запроса:', err))
+      .finally(() => {
+        setEmailValue("")
+        setShowModalConfirm(false)
+      })
   };
 
   const renderedCards = promoData.map((data, index) => (
